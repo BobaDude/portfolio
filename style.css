@@ -1,41 +1,41 @@
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    line-height: 2;
     color: white;
     background-color:black;
     padding: 0;
     margin: 0;
   }
   
-  header {
+header {
     background: black;
     color: #fff;
     padding: 1rem 0;
   }
   
-  .navbar {
+.navbar {
     display: flex;
     justify-content: center;
   }
   
-  .menu {
+.menu {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
   }
   
-  .menu li a {
+.menu li a {
     color: #fff;
     text-decoration: none;
     font-weight: 700;
     transition: color 0.3s ease;
   }
   
-  .menu li a:hover {
+.menu li a:hover {
     color: lightcoral;
   }
   
-  .hero {
+.hero {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,44 +45,48 @@ body {
     color: #fff;
     padding: 0 2rem;
   }
-  .hero-content h1 {
-    font-size: 4.25rem;
+  @keyframes fadein {
+    0% {
+      filter: blur(50px);
+
+    }
+    100%{
+      filter: blur(0px);
+    }
   }
+.hero-content h1 {
+    font-size: 4.25rem;
+    animation: fadein 1s 0s;
+    filter: blur(0);
+  }
+.hero-content p{
+  font-size: 2rem;
+  animation: fadein 2s 0.8s;
+}
   
-  main {
+main {
     padding: 2rem;
   }
   
-  section {
+section {
     margin-bottom: 2rem;
   }
   
-  h2 {
+h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: white;
-    border-bottom: 2px solid #2ecc71;
-    display: inline-block;
-  }
-  .about{
-    
-  }
-  .project-card {
-    background: lightslategray;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    text-align: center;
-  }
+    border-bottom: 2px solid lightcoral;
+    display: inline-block; }
   
-  .skills-list {
+.list {
     list-style: none;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
   }
   
-  .skills-list li {
+.list li {
     background: lightslategray;
     color: #fff;
     padding: 0.5rem 1rem;
@@ -91,24 +95,6 @@ body {
     align-items: center;
     gap: 0.5rem;
   }
-  .contact-icons {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    background: lightslategray;
-    border-radius: 8px;
-    padding: 1rem;
-  }
-  .contact-icons li a {
-    background: lightslategray;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .contact-icons li a:hover {
-    color: lightcoral;
-  }
-  
+.list li a:hover {
+    color: lightcoral;}
+    
