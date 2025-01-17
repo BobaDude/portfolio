@@ -100,5 +100,30 @@ h2 {
 a:link, a:visited{
       text-decoration: none;
     }
-    
+@media (max-width: 768px) {
+    .menu {
+          display: none;
+        }
+      
+    .menu-toggle {
+          display: flex;
+        }
+      
+    .menu.active {
+          display: flex;
+        }
+      
+    .hero-content h1 {
+          font-size: 3rem;
+        }
+      
+    .hero-content p {
+          font-size: 1.5rem;
+        }
+      
+    .list {
+          flex-direction: column;
+        }
+      }
+          
     
