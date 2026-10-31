@@ -1,5 +1,21 @@
 const progressBar = document.querySelector("#scroll-progress-bar");
 const revealSections = document.querySelectorAll("[data-reveal]");
+const themeToggle = document.querySelector("[data-theme-toggle]");
+const themeRoot = document.documentElement;
+const savedTheme = localStorage.getItem("portfolio-theme");
+
+const applyTheme = (theme) => {
+  themeRoot.dataset.theme = theme;
+  themeToggle.setAttribute("aria-checked", String(theme === "dark"));
+};
+
+applyTheme(savedTheme === "light" ? "light" : "dark");
+
+themeToggle.addEventListener("click", () => {
+  const nextTheme = themeRoot.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(nextTheme);
+  localStorage.setItem("portfolio-theme", nextTheme);
+});
 
 const updateScrollProgress = () => {
   const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;

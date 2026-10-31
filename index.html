@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,10 @@
         <li><a href="#resume">Resume</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="theme-toggle" type="button" role="switch" aria-checked="true" aria-label="Dark mode" data-theme-toggle>
+        <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
+        <span>Dark mode</span>
+      </button>
       <svg class="nav-trace" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
         <path pathLength="1" d="M 42 11 C 250 4 710 5 950 12 Q 985 15 988 42 C 992 70 970 88 940 90 C 700 96 280 93 56 90 Q 14 87 12 60 C 9 34 16 16 42 11 Z" />
       </svg>
@@ -63,6 +67,14 @@
         <g transform="translate(0 1050)">
           <g class="river-streak river-streak-three">
             <path d="M 0 11 C 57 -4 88 17 146 9 S 236 -2 310 12" />
+          </g>
+        </g>
+        <g class="river-boat">
+          <g class="boat-bob">
+            <path d="M 0 1004 Q 55 1020 120 1004 Q 105 1028 18 1026 Z" />
+            <path d="M 11 1004 Q 58 996 109 1004" />
+            <path d="M 57 1000 L 57 968 M 60 971 L 86 998 L 60 998 Z" />
+            <path d="M 53 1000 Q 43 988 34 998" />
           </g>
         </g>
       </svg>
