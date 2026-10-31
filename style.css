@@ -513,10 +513,82 @@ main {
 .story-section h2::after {
     display: block;
     width: 3.5rem;
-    height: 3px;
+    height: 4px;
     margin-top: 0.85rem;
-    background: var(--story-accent);
+    transform: scaleX(1) rotate(-1deg);
+    transform-origin: left center;
+    border-bottom: 1.5px solid var(--story-accent);
+    border-radius: 50%;
     content: "";
+    transition: transform 0.3s ease;
+  }
+
+.story-section h2:hover::after {
+    transform: scaleX(1.2) rotate(-1deg);
+  }
+
+.contact-email {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.75rem;
+    margin: 0;
+    color: var(--story-muted);
+  }
+
+.contact-email a {
+    color: var(--story-highlight);
+    font-weight: 700;
+  }
+
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+.social-link {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    background: var(--card-surface);
+    color: #0a66c2;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+.social-link img,
+.linkedin-icon {
+    display: block;
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+  }
+
+.linkedin-icon path {
+    fill: currentColor;
+  }
+
+.social-link:hover,
+.social-link:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--story-highlight);
+  }
+
+.social-link:focus-visible {
+    outline: 2px solid var(--story-highlight);
+    outline-offset: 3px;
+  }
+
+@media (prefers-reduced-motion: reduce) {
+    .story-section h2::after,
+    .social-link {
+        transition: none;
+    }
   }
 
 .list {
@@ -545,14 +617,31 @@ main {
   }
 
 #skills .list li {
-    justify-content: center;
-    min-height: 9rem;
+    min-height: 4.5rem;
+    flex-direction: row;
     align-items: center;
-    padding: 1rem;
+    justify-content: flex-start;
+    gap: 0.85rem;
+    padding: 0.75rem 1rem;
     border: 1px solid var(--card-border);
     border-left: 3px solid var(--story-accent);
     border-radius: 4px;
     background: var(--card-surface);
+  }
+
+.skill-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    object-fit: contain;
+  }
+
+.skill-label {
+    color: var(--story-ink);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
   }
 
 .list li img {
