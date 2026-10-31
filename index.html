@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="faviconpenguin.ico" />
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true">
+    <span id="scroll-progress-bar"></span>
+  </div>
   <header>
     <nav class="navbar">
       <ul class="menu">
@@ -24,53 +27,91 @@
   </header>
 
   <section id="home" class="hero">
+    <div class="hero-background" aria-hidden="true">
+      <svg class="hero-birds" viewBox="0 0 1440 520" preserveAspectRatio="none">
+        <g transform="translate(0 45)">
+          <g class="bird-flock bird-flock-one">
+            <path d="M 0 18 Q 12 2 24 18 Q 36 2 48 18 M 64 24 Q 73 12 82 24 Q 91 12 100 24" />
+          </g>
+        </g>
+        <g transform="translate(0 115)">
+          <g class="bird-flock bird-flock-two">
+            <path d="M 0 17 Q 10 3 20 17 Q 30 3 40 17 M 54 22 Q 62 11 70 22 Q 78 11 86 22" />
+          </g>
+        </g>
+        <g transform="translate(0 185)">
+          <g class="bird-flock bird-flock-three">
+            <path d="M 0 16 Q 9 3 18 16 Q 27 3 36 16 M 50 21 Q 57 11 64 21 Q 71 11 78 21" />
+          </g>
+        </g>
+      </svg>
+      <svg class="hero-river-lines" viewBox="0 0 1440 150" preserveAspectRatio="none">
+        <g transform="translate(0 10)">
+          <g class="river-streak river-streak-one">
+            <path d="M 0 8 C 42 -8 91 19 145 6 S 225 12 292 2" />
+          </g>
+        </g>
+        <g transform="translate(0 65)">
+          <g class="river-streak river-streak-two">
+            <path d="M 0 4 C 35 14 67 -7 104 5 S 156 14 204 2" />
+          </g>
+        </g>
+        <g transform="translate(0 112)">
+          <g class="river-streak river-streak-three">
+            <path d="M 0 11 C 57 -4 88 17 146 9 S 236 -2 310 12" />
+          </g>
+        </g>
+      </svg>
+    </div>
     <div class="hero-content">
-      <h1>Albert's Portfolio.</h1>
-      <p>If you have any questions you can contact me through links below! &#128512;</p>
+      <h1 class="hero-title" aria-label="Albert's Portfolio."><span class="typewriter-text" aria-hidden="true">Albert's Portfolio.</span></h1>
     </div>
   </section>
 
   <main>
-    <section id="about">
-      <h2>About Me:</h2>
-      <p> Greetings! My name is Albert, and I'm currently a highschooler who enjoys STEM. </p>
-      <img src="Albert.jpg" alt="photo of Albert" width="252" height="189"">
-    
+    <section id="about" class="story-section" data-reveal>
+      <div class="about-layout">
+        <div>
+          <h2>About Me</h2>
+          <p class="section-copy">Greetings! My name is Albert, and I'm currently a highschooler who enjoys STEM.</p>
+        </div>
+        <img class="about-photo" src="Albert.jpg" alt="Photo of Albert" width="252" height="189">
+      </div>
     </section>
     
-    <section id="work">
-      <h2>Work Experience:</h2>
+    <section id="work" class="story-section" data-reveal>
+      <h2>Work Experience</h2>
       <ul class="list">
         <li> Mayors Youth Program</li>
         <li> Chinese Tutor</li>
       </ul>
     </section>
     
-    <section id="projects">
-      <h2>Projects:</h2>
+    <section id="projects" class="story-section" data-reveal>
+      <h2>Projects</h2>
         <ul class="list">
           <li>Nothing here yet!</li>
         </ul>
     </section>
 
-    <section id="skills">
-      <h2>Skills:</h2>
+    <section id="skills" class="story-section" data-reveal>
+      <h2>Skills</h2>
       <ul class="list">
-        <li><img src="htmlimage.png" width="100" length="100"></li>
-        <li><img src="cssimage.png" width="100" length="100"></li>
-        <li><img src="pythonimage.png" width="100" length="100"></li>
+        <li><img src="htmlimage.png" alt="HTML" width="100" height="100"></li>
+        <li><img src="cssimage.png" alt="CSS" width="100" height="100"></li>
+        <li><img src="pythonimage.png" alt="Python" width="100" height="100"></li>
       </ul>
     </section>
 
-    <section id="resume">
-      <h2>Resume:</h2>
+    <section id="resume" class="story-section" data-reveal>
+      <h2>Resume</h2>
       <ul class="list">
         <li>Sorry, nothing here right now!</li>
       </ul>
     </section>
 
-    <section id="contact">
-      <h2>Contacts:</h2>
+    <section id="contact" class="story-section" data-reveal>
+      <h2>Contact</h2>
         <p> Work Email: <a href="mailto:27azhang@cpsd.us">27azhang@cpsd.us</a></p>
         <p> Personal Email: <a href="mailto:azhang.us1@gmail.com">azhang.us1@gmail.com</a></p>
       <ul class="list">
@@ -83,5 +124,6 @@
       
     </section>
   </main>
+  <script src="script.js" defer></script>
 </body>
 </html>
