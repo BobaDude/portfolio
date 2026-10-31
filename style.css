@@ -20,6 +20,7 @@
   --hero-title-ink: #fff;
   --card-surface: rgba(24, 39, 55, 0.82);
   --card-border: rgba(169, 200, 226, 0.12);
+  --card-sketch: rgba(93, 174, 219, 0.62);
   --contact-card: rgba(24, 39, 55, 0.55);
   }
 
@@ -44,6 +45,7 @@ html[data-theme="light"] {
   --hero-overlay: rgba(0, 0, 0, 0.18);
   --card-surface: rgba(255, 255, 255, 0.78);
   --card-border: rgba(44, 75, 93, 0.16);
+  --card-sketch: rgba(57, 127, 159, 0.58);
   --contact-card: rgba(255, 255, 255, 0.45);
   }
 
@@ -603,6 +605,11 @@ main {
   }
 
 .list li {
+  --card-tilt: -0.55deg;
+  --card-back-tilt: 0.7deg;
+  --card-corners: 5px 2px 6px 3px / 3px 5px 2px 6px;
+  position: relative;
+  isolation: isolate;
     display: flex;
     min-height: 6rem;
     flex-direction: column;
@@ -610,17 +617,85 @@ main {
     justify-content: center;
     gap: 0.4rem;
     padding: 1rem 1.1rem;
-    border: 1px solid var(--card-border);
-    border-top: 2px solid var(--story-accent);
-    border-radius: 4px;
-    background: var(--card-surface);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: var(--story-ink);
-    transition: border-color 0.25s ease, background-color 0.25s ease;
   }
 
-.list li:hover {
-    border-color: var(--story-highlight);
-    background: var(--nav-hover);
+.list li::before,
+.list li::after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    border: 1px solid var(--card-sketch);
+    border-radius: var(--card-corners);
+    pointer-events: none;
+  }
+
+.list li::before {
+    inset: 0;
+    transform: rotate(var(--card-tilt));
+    border-top: 2px solid var(--story-highlight);
+    background: var(--card-surface);
+    box-shadow: 1px 1px 0 -0.5px var(--card-sketch), -1px -1px 0 -0.5px var(--card-sketch);
+    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+
+.list li::after {
+    inset: -2px 2px 1px -2px;
+    transform: rotate(var(--card-back-tilt));
+    opacity: 0.72;
+    box-shadow: -1px 1px 0 -0.5px var(--card-sketch);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+#work .list li:nth-child(2n) {
+  --card-tilt: 0.65deg;
+  --card-back-tilt: -0.5deg;
+    --card-corners: 2px 6px 3px 5px / 6px 3px 5px 2px;
+  }
+
+#projects .list li:nth-child(2) {
+  --card-tilt: 0.55deg;
+  --card-back-tilt: -0.7deg;
+    --card-corners: 3px 7px 2px 5px / 5px 2px 6px 3px;
+  }
+
+#projects .list li:nth-child(3) {
+  --card-tilt: -0.45deg;
+  --card-back-tilt: 0.65deg;
+    --card-corners: 6px 3px 5px 2px / 2px 6px 3px 5px;
+  }
+
+#skills .list li:nth-child(2n) {
+  --card-tilt: 0.6deg;
+  --card-back-tilt: -0.55deg;
+    --card-corners: 3px 6px 2px 5px / 5px 3px 6px 2px;
+  }
+
+#skills .list li:nth-child(3n) {
+  --card-tilt: -0.5deg;
+  --card-back-tilt: 0.6deg;
+    --card-corners: 6px 2px 5px 3px / 3px 6px 2px 5px;
+  }
+
+#resume .list li {
+  --card-tilt: 0.5deg;
+  --card-back-tilt: -0.65deg;
+    --card-corners: 3px 5px 2px 7px / 5px 2px 6px 3px;
+  }
+
+@media (hover: hover) {
+    .list li:hover::before {
+      transform: rotate(0deg) translateY(-1px);
+        border-color: var(--story-highlight);
+    }
+
+    .list li:hover::after {
+      transform: rotate(0deg) translateY(-1px);
+      opacity: 0.9;
+    }
   }
 
 #skills .list li {
@@ -630,10 +705,6 @@ main {
     justify-content: flex-start;
     gap: 0.85rem;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--card-border);
-    border-left: 3px solid var(--story-accent);
-    border-radius: 4px;
-    background: var(--card-surface);
   }
 
 .skill-icon {
@@ -717,10 +788,9 @@ main {
   }
 
 #contact .list li {
-    border-color: var(--card-border);
-    border-left-color: var(--story-highlight);
-  border-top-color: var(--story-highlight);
-  background: var(--contact-card);
+  --card-tilt: -0.4deg;
+  --card-back-tilt: 0.6deg;
+  --card-corners: 4px 7px 3px 5px / 3px 5px 6px 2px;
     color: var(--story-ink);
   }
 
@@ -899,6 +969,19 @@ a:link, a:visited{
 
       .list li {
         transition: none;
+      }
+
+      .list li::before,
+      .list li::after {
+        transition: none;
+      }
+
+      .list li:hover::before {
+        transform: rotate(var(--card-tilt));
+      }
+
+      .list li:hover::after {
+        transform: rotate(var(--card-back-tilt));
       }
   }
 
