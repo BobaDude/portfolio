@@ -23,12 +23,16 @@
         <li><a href="#resume">Resume</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <svg class="nav-trace" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" d="M 42 11 C 250 4 710 5 950 12 Q 985 15 988 42 C 992 70 970 88 940 90 C 700 96 280 93 56 90 Q 14 87 12 60 C 9 34 16 16 42 11 Z" />
+      </svg>
     </nav>
   </header>
 
   <section id="home" class="hero">
     <div class="hero-background" aria-hidden="true">
-      <svg class="hero-birds" viewBox="0 0 1440 520" preserveAspectRatio="none">
+      <div class="hero-scene">
+      <svg class="hero-birds" viewBox="0 0 1440 1080" preserveAspectRatio="none">
         <g transform="translate(0 45)">
           <g class="bird-flock bird-flock-one">
             <path d="M 0 18 Q 12 2 24 18 Q 36 2 48 18 M 64 24 Q 73 12 82 24 Q 91 12 100 24" />
@@ -45,23 +49,24 @@
           </g>
         </g>
       </svg>
-      <svg class="hero-river-lines" viewBox="0 0 1440 150" preserveAspectRatio="none">
-        <g transform="translate(0 10)">
+      <svg class="hero-river-lines" viewBox="0 0 1440 1080" preserveAspectRatio="none">
+        <g transform="translate(0 990)">
           <g class="river-streak river-streak-one">
             <path d="M 0 8 C 42 -8 91 19 145 6 S 225 12 292 2" />
           </g>
         </g>
-        <g transform="translate(0 65)">
+        <g transform="translate(0 1025)">
           <g class="river-streak river-streak-two">
             <path d="M 0 4 C 35 14 67 -7 104 5 S 156 14 204 2" />
           </g>
         </g>
-        <g transform="translate(0 112)">
+        <g transform="translate(0 1050)">
           <g class="river-streak river-streak-three">
             <path d="M 0 11 C 57 -4 88 17 146 9 S 236 -2 310 12" />
           </g>
         </g>
       </svg>
+      </div>
     </div>
     <div class="hero-content">
       <h1 class="hero-title" aria-label="Albert's Portfolio."><span class="typewriter-text" aria-hidden="true">Albert's Portfolio.</span></h1>
@@ -88,10 +93,27 @@
     </section>
     
     <section id="projects" class="story-section" data-reveal>
-      <h2>Projects</h2>
-        <ul class="list">
-          <li>Nothing here yet!</li>
-        </ul>
+      <h2>My Projects</h2>
+      <ul class="list project-list">
+        <li>
+          <a class="project-link" href="https://github.com/BobaDude/Calculator" target="_blank" rel="noopener noreferrer">
+            <span>Calculator</span>
+            <span aria-hidden="true">&#8599;</span>
+          </a>
+        </li>
+        <li>
+          <a class="project-link" href="https://github.com/BobaDude/sportsapi" target="_blank" rel="noopener noreferrer">
+            <span>Sports API</span>
+            <span aria-hidden="true">&#8599;</span>
+          </a>
+        </li>
+        <li>
+          <a class="project-link" href="https://github.com/BobaDude/EtchSketch" target="_blank" rel="noopener noreferrer">
+            <span>EtchSketch</span>
+            <span aria-hidden="true">&#8599;</span>
+          </a>
+        </li>
+      </ul>
     </section>
 
     <section id="skills" class="story-section" data-reveal>
