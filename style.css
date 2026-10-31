@@ -333,59 +333,11 @@ html[data-theme="light"] .river-streak {
     display: none;
   }
 
-.river-ship {
-    display: none;
-    opacity: 0;
-    transform-box: view-box;
-    transform-origin: 0 0;
-    animation: ship-sail 58s ease-in-out -10s infinite;
-  }
-
-html[data-theme="light"] .river-ship {
-    display: inline;
-  }
-
-.river-ship path {
-    fill: none;
-    stroke: var(--story-highlight);
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    vector-effect: non-scaling-stroke;
-  }
-
-.river-ship .ship-hull {
-    fill: rgba(238, 243, 246, 0.34);
-    stroke-width: 2.4;
-  }
-
-.river-ship .ship-canvas {
-    fill: rgba(238, 243, 246, 0.48);
-    stroke-width: 1.9;
-  }
-
-.river-ship .ship-rigging {
-    opacity: 0.7;
-    stroke-width: 1.1;
-  }
-
-.river-ship .ship-sketch {
-    opacity: 0.58;
-    stroke-width: 1.05;
-  }
-
-.river-ship .ship-wake {
-    opacity: 0.42;
-    stroke-width: 1.3;
-  }
-
-.ship-bob {
-    transform-box: fill-box;
-    animation: ship-rock 4.2s ease-in-out infinite alternate;
-  }
-
 .hero-content {
-    position: relative;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
     z-index: 1;
   }
 
@@ -429,35 +381,40 @@ html[data-theme="light"] .river-ship {
     }
   }
 
-@keyframes ship-sail {
+@keyframes dino-enter {
     0% {
         opacity: 0;
-    transform: translateX(4%);
+        transform: translateX(-29%) translateY(10px);
     }
-    8% {
-        opacity: 0.92;
-    transform: translateX(5%);
+    10% {
+        opacity: 1;
+        transform: translateX(-28%) translateY(0);
     }
-    50% {
-        opacity: 0.95;
-    transform: translateX(12%);
-    }
-    92% {
-        opacity: 0.9;
-    transform: translateX(17%);
+    78% {
+        opacity: 1;
+        transform: translateX(14%) translateY(0);
     }
     100% {
-        opacity: 0;
-    transform: translateX(18%);
+        opacity: 1;
+        transform: translateX(14%) translateY(0);
     }
   }
 
-@keyframes ship-rock {
+@keyframes dino-step {
+    from {
+        transform: rotate(-8deg);
+    }
+    to {
+        transform: rotate(8deg);
+    }
+  }
+
+@keyframes dino-bob {
     from {
         transform: translateY(1px);
     }
     to {
-        transform: translateY(-3px);
+        transform: translateY(-4px);
     }
   }
 
@@ -469,8 +426,10 @@ html[data-theme="light"] .river-ship {
     .hero-scene,
     .bird-flock,
     .river-streak,
-    .river-ship,
-    .ship-bob {
+    .hero-dino,
+    .dino-walk,
+    .dino-front-leg,
+    .dino-back-leg {
         animation: none;
     }
 
@@ -479,9 +438,9 @@ html[data-theme="light"] .river-ship {
       opacity: 0;
     }
 
-    .river-ship {
-      opacity: 0.95;
-      transform: translateX(12%);
+    .hero-dino {
+      opacity: 1;
+      transform: translateX(14%);
     }
   }
 
@@ -728,6 +687,29 @@ a:link, a:visited{
           grid-template-columns: 1fr;
         }
       }
+
+@media (max-aspect-ratio: 4 / 3) {
+    .hero {
+        min-height: 0;
+        padding: 0;
+    }
+
+    .hero-background {
+        position: relative;
+        inset: auto;
+        flex: 0 0 auto;
+        width: calc(100% - clamp(88px, 10vw, 192px));
+        height: auto;
+        aspect-ratio: 4 / 3;
+        margin: clamp(44px, 5vw, 96px) auto;
+    }
+
+    .hero-scene {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4 / 3;
+    }
+  }
 
 @media (prefers-reduced-motion: reduce) {
     .has-scroll-reveal [data-reveal] {
