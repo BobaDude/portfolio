@@ -40,7 +40,7 @@ html[data-theme="light"] {
   --nav-trace: rgba(57, 127, 159, 0.66);
   --hero-frame: #dbe5ea;
   --hero-matte: #d1dce2;
-  --hero-image: url("./IMG_2248.png");
+  --hero-image: url("./IMG_1387.png");
   --hero-overlay: rgba(0, 0, 0, 0.18);
   --card-surface: rgba(255, 255, 255, 0.78);
   --card-border: rgba(44, 75, 93, 0.16);
@@ -329,28 +329,59 @@ header {
     stroke-width: 2;
   }
 
-.river-boat {
+html[data-theme="light"] .river-streak {
     display: none;
-    opacity: 0;
-    transform-box: fill-box;
-  animation: boat-glide 48s ease-in-out -15s infinite;
   }
 
-html[data-theme="light"] .river-boat {
+.river-ship {
+    display: none;
+    opacity: 0;
+    transform-box: view-box;
+    transform-origin: 0 0;
+    animation: ship-sail 58s ease-in-out -10s infinite;
+  }
+
+html[data-theme="light"] .river-ship {
     display: inline;
   }
 
-.river-boat path {
+.river-ship path {
     fill: none;
     stroke: var(--story-highlight);
-    stroke-width: 3;
+    stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
   }
 
-.boat-bob {
-    animation: boat-bob 3.2s ease-in-out infinite alternate;
+.river-ship .ship-hull {
+    fill: rgba(238, 243, 246, 0.34);
+    stroke-width: 2.4;
+  }
+
+.river-ship .ship-canvas {
+    fill: rgba(238, 243, 246, 0.48);
+    stroke-width: 1.9;
+  }
+
+.river-ship .ship-rigging {
+    opacity: 0.7;
+    stroke-width: 1.1;
+  }
+
+.river-ship .ship-sketch {
+    opacity: 0.58;
+    stroke-width: 1.05;
+  }
+
+.river-ship .ship-wake {
+    opacity: 0.42;
+    stroke-width: 1.3;
+  }
+
+.ship-bob {
+    transform-box: fill-box;
+    animation: ship-rock 4.2s ease-in-out infinite alternate;
   }
 
 .hero-content {
@@ -398,31 +429,37 @@ html[data-theme="light"] .river-boat {
     }
   }
 
-  @keyframes boat-glide {
+@keyframes ship-sail {
     0% {
-      opacity: 0;
-      transform: translateX(-18vw);
+        opacity: 0;
+    transform: translateX(4%);
     }
-    10%, 88% {
-      opacity: 0.88;
+    8% {
+        opacity: 0.92;
+    transform: translateX(5%);
     }
     50% {
-      transform: translateX(48vw);
+        opacity: 0.95;
+    transform: translateX(12%);
+    }
+    92% {
+        opacity: 0.9;
+    transform: translateX(17%);
     }
     100% {
-      opacity: 0;
-      transform: translateX(116vw);
+        opacity: 0;
+    transform: translateX(18%);
     }
-    }
+  }
 
-  @keyframes boat-bob {
+@keyframes ship-rock {
     from {
-      transform: translateY(0);
+        transform: translateY(1px);
     }
     to {
-      transform: translateY(-5px);
+        transform: translateY(-3px);
     }
-    }
+  }
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -432,8 +469,8 @@ html[data-theme="light"] .river-boat {
     .hero-scene,
     .bird-flock,
     .river-streak,
-    .river-boat,
-    .boat-bob {
+    .river-ship,
+    .ship-bob {
         animation: none;
     }
 
@@ -442,9 +479,9 @@ html[data-theme="light"] .river-boat {
       opacity: 0;
     }
 
-    .river-boat {
-        opacity: 0.88;
-        transform: translateX(42vw);
+    .river-ship {
+      opacity: 0.95;
+      transform: translateX(12%);
     }
   }
 
