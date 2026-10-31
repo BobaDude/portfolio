@@ -334,10 +334,12 @@ html[data-theme="light"] .river-streak {
   }
 
 .hero-content {
-  position: absolute;
-  inset: 0;
+    position: absolute;
+    inset: 0;
   display: grid;
   place-items: center;
+  text-align: center;
+    pointer-events: none;
     z-index: 1;
   }
 
@@ -381,43 +383,6 @@ html[data-theme="light"] .river-streak {
     }
   }
 
-@keyframes dino-enter {
-    0% {
-        opacity: 0;
-        transform: translateX(-29%) translateY(10px);
-    }
-    10% {
-        opacity: 1;
-        transform: translateX(-28%) translateY(0);
-    }
-    78% {
-        opacity: 1;
-        transform: translateX(14%) translateY(0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(14%) translateY(0);
-    }
-  }
-
-@keyframes dino-step {
-    from {
-        transform: rotate(-8deg);
-    }
-    to {
-        transform: rotate(8deg);
-    }
-  }
-
-@keyframes dino-bob {
-    from {
-        transform: translateY(1px);
-    }
-    to {
-        transform: translateY(-4px);
-    }
-  }
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -425,11 +390,7 @@ html[data-theme="light"] .river-streak {
 
     .hero-scene,
     .bird-flock,
-    .river-streak,
-    .hero-dino,
-    .dino-walk,
-    .dino-front-leg,
-    .dino-back-leg {
+    .river-streak {
         animation: none;
     }
 
@@ -438,10 +399,6 @@ html[data-theme="light"] .river-streak {
       opacity: 0;
     }
 
-    .hero-dino {
-      opacity: 1;
-      transform: translateX(14%);
-    }
   }
 
 .hero-content h1 {
@@ -505,7 +462,7 @@ main {
 
 .story-section {
     margin: 0;
-  padding: 7rem max(1.5rem, calc((100% - 1080px) / 2));
+    padding: 6rem max(1.5rem, calc((100% - 900px) / 2));
     scroll-margin-top: 2rem;
   }
 
@@ -521,9 +478,9 @@ main {
 
 .about-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.55fr);
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 0.5fr);
     align-items: center;
-    gap: 4rem;
+  gap: 3rem;
   }
 
 .about-photo {
@@ -538,17 +495,19 @@ main {
   }
 
 .section-copy {
-    max-width: 42rem;
+  max-width: 40rem;
     margin: 0;
     color: var(--story-muted);
-    font-size: 1.15rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
   }
 
 .story-section h2 {
-    margin: 0 0 1.5rem;
+  margin: 0 0 1.25rem;
     color: inherit;
     border: 0;
     display: block;
+  line-height: 1.15;
   }
 
 .story-section h2::after {
@@ -562,29 +521,38 @@ main {
 
 .list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 0.85rem;
-    margin: 2rem 0 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.85rem;
+  max-width: 52rem;
+  margin: 1.5rem 0 0;
     padding: 0;
     list-style: none;
   }
 
 .list li {
     display: flex;
-    min-height: 4.5rem;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.25rem;
-  border: 1px solid var(--card-border);
-    border-left: 3px solid var(--story-accent);
+    min-height: 6rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--card-border);
+    border-top: 2px solid var(--story-accent);
     border-radius: 4px;
-  background: var(--card-surface);
+    background: var(--card-surface);
     color: var(--story-ink);
   }
 
 #skills .list li {
     justify-content: center;
-    min-height: 8rem;
+    min-height: 9rem;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--story-accent);
+    border-radius: 4px;
+    background: var(--card-surface);
   }
 
 .list li img {
@@ -593,29 +561,69 @@ main {
   }
 
 .project-list li {
-    padding: 0;
+    padding: 0 0 0 1rem;
+  }
+
+#projects .project-list {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 
 .project-link {
+    position: relative;
     display: flex;
     width: 100%;
-    min-height: 4.5rem;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
+    min-height: 7rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.25rem 2.5rem 0.25rem 0;
     color: inherit;
   }
 
-.project-link span:last-child {
+.project-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+.project-meta {
+    color: var(--story-muted);
+    font-size: 0.8rem;
+  }
+
+.project-arrow {
+    position: absolute;
+    top: 0.25rem;
+    right: 0;
     color: var(--story-highlight);
-    font-size: 1.25rem;
+    display: grid;
+    width: 1.9rem;
+    height: 1.9rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid var(--card-border);
+    border-radius: 50%;
+    font-size: 1rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+.project-link:hover .project-arrow,
+.project-link:focus-visible .project-arrow {
+    transform: translate(2px, -2px);
+    border-color: var(--story-highlight);
+  }
+
+.project-link:focus-visible {
+    outline: 2px solid var(--story-highlight);
+    outline-offset: 4px;
   }
 
 #contact .list li {
     border-color: var(--card-border);
     border-left-color: var(--story-highlight);
-    background: var(--contact-card);
+  border-top-color: var(--story-highlight);
+  background: var(--contact-card);
     color: var(--story-ink);
   }
 
@@ -687,6 +695,18 @@ a:link, a:visited{
           grid-template-columns: 1fr;
         }
       }
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+  }
+
+@media (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+  }
 
 @media (max-aspect-ratio: 4 / 3) {
     .hero {
